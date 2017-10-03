@@ -1,0 +1,9 @@
+import org.openqa.selenium.chrome.*; 
+public class LaunchChrome {
+
+	public static void main(String[] args) {
+		System.setProperty("chromedriver.exe","C:\\Users\\priyadav\\Documents\\Backup_priyanka\\Selenium Downloads and extracts\\zipped");
+      ChromeDriver f =new ChromeDriver();
+	}
+
+}

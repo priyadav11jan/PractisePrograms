@@ -1,0 +1,9 @@
+import org.openqa.selenium.firefox.*; 
+public class LaunchChrome {
+
+	public static void main(String[] args) {
+		System.setProperty("geckodriver.exe","C:\\Users\\priyadav\\Desktop\\Backup2\\Priyanka_Eclipse\\Qspiders\\Selenium");
+      FirefoxDriver f =new FirefoxDriver();
+	}
+
+}

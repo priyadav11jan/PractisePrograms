@@ -1,0 +1,63 @@
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class Google1 {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver =new ChromeDriver();//launching chrome
+      
+		
+	  //Browser specific actions	
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		
+	
+		
+		
+		driver.get("https://www.google.com");
+		driver.findElement(By.id("lst-ib")).sendKeys("Selenium",Keys.ENTER);
+		
+		List<WebElement> links=driver.findElements(By.xpath("//a"));
+		
+		for(int i=0;i<links.size();i++)
+		{
+			links=driver.findElements(By.xpath("//h3/a"));
+		WebElement link = links.get(i);
+		link.click();
+		
+		Thread.sleep(5000);
+		
+		
+		
+		List<WebElement> sels= driver.findElements(By.xpath("//*[contains(text(),'Selenium')]"));
+		
+		for(int j=0;j<sels.size();j++)
+		{
+			
+			WebElement sel=sels.get(j);
+		String seli=sel.getText();
+		System.out.println(seli);
+		
+		}
+		
+		}	
+		driver.navigate().back();
+		
+		
+		driver.close();
+
+	}
+
+}

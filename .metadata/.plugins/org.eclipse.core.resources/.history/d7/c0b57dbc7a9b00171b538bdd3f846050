@@ -1,0 +1,67 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Loginprog {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver = new ChromeDriver();  //launching Chrome
+		driver.manage().window().maximize();
+		
+		
+		
+		driver.get("https://gso3--deltest3.cs23.my.salesforce.com/");
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.findElement( By.id("username")).sendKeys("priyadav@gso3.lly.deltest3");
+		//driver.findElement(By.id("password")).sendKeys("Test123!");
+		
+		driver.findElement(By.xpath("//input[starts-with(@id,'pas')]")).sendKeys("Test123!",Keys.ENTER);
+		
+		
+		
+		driver.navigate().to("https://gso3--deltest3.cs23.my.salesforce.com/a1B/e?Name=Autopopulated&nooverride=1&retURL=%2Fa1B%2Fo");
+		
+		
+		
+		
+		driver.findElement(By.name("00N60000002zkgz")).sendKeys("First Name");
+		
+		driver.findElement(By.name("00N60000002zkh4")).sendKeys("Last Name");
+		
+		driver.findElement(By.name("00N60000002zkgy")).sendKeys("9/17/2000"); //DOB
+		
+		Select gender=new Select(driver.findElement(By.name("00N60000002zkh1")));//Gender
+		
+		gender.selectByValue("F");
+		
+		driver.findElement(By.name("00N60000002zkhA")).sendKeys("priyadav@deloitte.com"); //email
+		
+		driver.findElement(By.name("00N60000002zkhY")).sendKeys("0000000000");
+		
+		Select phtype= new Select(driver.findElement(By.name("00N60000002zkhS")));
+		
+		phtype.selectByValue("Cell");
+		
+		WebDriverWait wait=new WebDriverWait(driver,30);
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[contains(@name,'save_new_url')]")));
+		
+		driver.findElement(By.xpath("//input[contains(@name,'save_new_url')]")).click();
+	
+		
+		
+		
+		
+	}
+
+}

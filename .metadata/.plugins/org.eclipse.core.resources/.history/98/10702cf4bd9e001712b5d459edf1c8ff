@@ -1,0 +1,29 @@
+package Pangaea;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestFileUpload {
+
+	public static void main(String[] args) throws Exception {
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver = new ChromeDriver();  //launching Chrome
+		driver.manage().window().maximize();
+		
+		
+		
+		driver.get("file:///C:/Users/priyadav/Desktop/FileUpload.html");
+		
+		driver.findElement(By.xpath("//input[@id='1']")).click();
+		
+		
+		Runtime.getRuntime().exec("C:\\Users\\priyadav\\Desktop\\Test.exe");
+
+	}
+
+}

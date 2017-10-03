@@ -1,0 +1,32 @@
+package Pangaea;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import CSP.GetData2;
+
+public class Login_Pangaea {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver = new ChromeDriver();  //launching Chrome
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("https://test.salesforce.com/");
+		
+		//Login to Pangaea
+		driver.findElement(By.id("username")).sendKeys(GetData2.fromExcel("Test1","Sheet1",2, 0));
+		driver.findElement(By.xpath("//input[starts-with(@id,'pas')]")).sendKeys(GetData2.fromExcel("Test1","sheet1", 2, 1),Keys.ENTER);
+		
+		Thread.sleep(5000);
+		
+		//Navigate to Create Study
+		driver.get("https://gso--pangpcopy--c.cs89.visual.force.com/apex/PANG_CreateBP?BPType=Study_BP");
+	}
+
+}

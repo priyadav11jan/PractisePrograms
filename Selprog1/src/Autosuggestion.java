@@ -1,0 +1,51 @@
+import java.util.List;
+import org.openqa.selenium.TakesScreenshot;
+	import java.util.concurrent.TimeUnit;
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.Keys;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class Autosuggestion {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver = new ChromeDriver();  //launching Chrome
+		
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); //wait for 30 seconds before timeout
+        
+        driver.get("https://www.google.com");
+        
+        driver.findElement(By.id("lst-ib")).sendKeys("google");
+        Thread.sleep(10000);
+        
+        List <WebElement> autos =driver.findElements(By.xpath("//div[contains(@class,'sbqs_c')]"));
+        
+        for(int i=0;i<autos.size();i++)
+        	
+        {
+        	
+        	autos= driver.findElements(By.xpath("//div[contains(@class,'sbqs_c')]"));
+        	WebElement auto= autos.get(i);
+        	
+        	if((auto.getText()).equals("google translate"))
+        	{
+        		
+        		auto.click();
+        	}
+        	else
+        	{
+        		System.out.println(auto.getText());
+        	}
+        	
+        }
+
+	}
+
+}

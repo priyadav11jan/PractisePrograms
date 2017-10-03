@@ -1,0 +1,9 @@
+import org.openqa.selenium.firefox.*; 
+public class LaunchChrome {
+
+	public static void main(String[] args) {
+		System.setProperty("chromedriver.exe","C:\\Users\\priyadav\\Downloads\\chromedriver_win32");
+      FirefoxDriver f =new FirefoxDriver();
+	}
+
+}

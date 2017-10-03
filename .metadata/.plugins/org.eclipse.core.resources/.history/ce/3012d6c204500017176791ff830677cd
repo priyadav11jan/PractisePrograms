@@ -1,0 +1,37 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Actions1 {
+
+	public static void main(String[] args) {
+		
+
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     WebDriver driver= new ChromeDriver();
+	     
+	     driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+	     driver.manage().window().maximize();
+	     
+	     driver.get("https://www.irctc.co.in");
+	     
+	     
+	     String jscommand="Windows.scroll(0,500)";
+	     JavascriptExecutor jwe= (JavascriptExecutor)driver;
+	     jwe.executeScript(jscommand);
+	     
+	    /*WebElement ele=  driver.findElement(By.partialLinkText("Gmail"));
+	    Actions ac= new Actions(driver);
+	    
+	    ac.moveToElement(ele).contextClick().sendKeys("t").build().perform();*/
+	    
+	    
+	}
+
+}

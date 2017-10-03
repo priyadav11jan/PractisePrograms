@@ -1,0 +1,77 @@
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Backend {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver =new ChromeDriver();//launching chrome
+      
+		
+	  //Browser specific actions	
+		driver.manage().window().maximize();
+		driver.get("https://test.salesforce.com/");
+		
+		WebElement un =driver.findElement(By.id("username"));
+		un.sendKeys("thakurvsingh@gso3.lly.deltest1");
+		
+		WebElement pwd =driver.findElement(By.id("password"));
+		pwd.sendKeys("Password!111");
+		
+		WebElement login =driver.findElement(By.id("Login"));
+		login.click();
+		
+		Thread.sleep(5000);
+		
+		WebElement claudia =driver.findElement(By.linkText("UK_Test_ BackOffice_Claudia"));
+		claudia.click();
+		
+		WebElement allTab =driver.findElement(By.className("allTabsArrow"));
+		allTab.click();
+		
+		WebElement patient =driver.findElement(By.xpath("//img[@title='Patients']"));
+		patient.click();
+		
+		WebElement newPatient = driver.findElement(By.xpath("//input[@title='New']"));
+		newPatient.click();
+		
+		
+		List<WebElement> textFields = driver.findElements(By.xpath("//input[@type='text']"));
+		
+		for (int i=0;i<textFields.size();i++)
+			
+				{
+		        WebElement textfield= textFields.get(i);
+		        
+		        textfield.sendKeys("test1");
+		        }	
+		
+List<WebElement> picklists = driver.findElements(By.tagName("select"));
+		
+		for (int i=0;i<picklists.size();i++)
+			
+				{
+		        WebElement picklist= picklists.get(i);
+		        
+		        
+		        
+		        Select set=new Select(picklist);
+		        set.selectByIndex(0);
+		        
+		        
+		        }	
+		
+		
+		
+		
+		}
+}
+
+

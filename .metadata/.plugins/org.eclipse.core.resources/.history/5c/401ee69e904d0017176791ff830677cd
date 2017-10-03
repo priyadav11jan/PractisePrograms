@@ -1,0 +1,33 @@
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+public class Google1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\priyadav\\Downloads\\chromedriver_win32\\chromedriver.exe"); //setting path to the driver
+	     
+		WebDriver driver =new ChromeDriver();//launching chrome
+      
+		
+	  //Browser specific actions	
+		driver.manage().window().maximize();
+		driver.get("https://www.google.com");
+		driver.findElement(By.id("lst-ib")).sendKeys("Selenium",Keys.ENTER);
+		driver.findElement(By.xpath("//a")).click();
+		
+	
+		String title= driver.getTitle();
+		System.out.println(title);
+		driver.close();
+
+	}
+
+}
