@@ -45,7 +45,7 @@ public class Loginprog {
 		
 		gender.selectByValue("F");
 		
-		driver.findElement(By.name("00N60000002zkhA")).sendKeys("priyadav@deloitte.com"); //email
+		driver.findElement(By.name("00N60000002zkhA")).sendKeys("1991priyankaa@gmail.com"); //email
 		
 		driver.findElement(By.name("00N60000002zkhY")).sendKeys("0000000000");
 		
